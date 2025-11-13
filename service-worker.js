@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-sample-cache-v7';
+const CACHE_NAME = 'pwa-sample-cache-v12';
 const ASSETS = [
   '/',
   '/index.html',
@@ -6,7 +6,8 @@ const ASSETS = [
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/animation.riv',
-  '/rive.js'
+  '/rive.js',
+  '/init.js'
 ];
 
 // Install event
