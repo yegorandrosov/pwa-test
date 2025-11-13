@@ -14,18 +14,41 @@
   <!-- Basic styles -->
   <style>
     body { font-family: sans-serif; text-align: center; padding: 2em; }
-    button { padding: 1em; font-size: 1em; }
+    canvas { display: block; margin: 0 auto; }
   </style>
+
+  <script src="rive.js"></script>
 </head>
 <body>
-  <h1>Hello from PWA!</h1>
-  <button onclick="sayHello()">Click me</button>
-
+  <canvas id="riveCanvas"></canvas>
+  
   <script>
-    function sayHello() {
-      alert("PWA working!");
+    const riveCanvas = document.getElementById('riveCanvas');
+
+    function resizeCanvas() {
+      const size = Math.min(window.innerWidth * 1, 600); // max 600px
+      riveCanvas.width = size;
+      riveCanvas.height = size;
     }
 
+    resizeCanvas();
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
+
+    const riveAnimation = new rive.Rive({
+      src: 'animation.riv',
+      canvas: riveCanvas,
+      autoplay: true,
+      stateMachines: ['State Machine 1'],
+      fit: rive.Fit.CONTAIN,     
+      alignment: rive.Alignment.CENTER
+    });
+  </script>
+
+
+  <script>
     // Register service worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
